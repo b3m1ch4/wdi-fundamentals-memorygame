@@ -1,11 +1,6 @@
 <!DOCTYPE CSS>
-a:link{
-  color: white;
+a {
   margin: 0px 20px 0px 20px;
-}
-
-a:visited {
-  color: white
 }
 
 a:hover {
@@ -91,8 +86,8 @@ main {
 }
 
 nav {
+  color: white; 
 	background-color: #00A6B3;
-  color: #FFFFFF;
 	padding: 20px 0px 20px 0px;
   font-family: Raleway;
   letter-spacing: 1px;
