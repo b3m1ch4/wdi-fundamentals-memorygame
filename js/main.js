@@ -1,6 +1,8 @@
 /* memory game JS code */
+
 /* Cards in Play */
 var cardsInPlay = [];
+
 /* "Deck" of Cards */
 var cards = [
   {
@@ -21,24 +23,39 @@ var cards = [
   cardImage: "images/king-of-diamonds.png"}
 ];
 
+/* Creates Game Board */
+var createBoard = function () {
+  for (var i = 0; i < cards.length; i++) {
+    var cardElement = document.createElement('img');
+    cardElement.setAttribute('src', 'images/back.png');
+    cardElement.setAttribute('data-id', i);
+    cardElement.addEventListener('click', flipCard);
+    document.getElementById('game-board').appendChild(cardElement);
+  }
+}
+
+/* Check for Match
+How do I get this to run before the page reloads? */
+var checkForMatch = function () {
+    if ( cardsInPlay[0] === cardsInPlay[1]) {
+      alert("Congratulations! You found a match :)");
+      }
+    else {
+      alert("Good try, but please try again.");
+    };
+  };
+
 /* Flip a Card*/
-var flipCard = function(cardId) {
+var flipCard = function () {
+var cardId = this.getAttribute('data-id');
 cardsInPlay.push(cards[cardId].rank);
 console.log("User flipped " + cards[cardId].rank);
-console.log(cards[cardId].cardImage);
-console.log(cards[cardId].suit);
-}
-flipCard(0);
-flipCard(2);
-
-/* Check for Match */
-var checkForMatch = function() {
-  if (cardsInPlay[0] === cardsInPlay[1]) {
-    console.log("You found a match!");
-  }
-  else {
-    console.log("Sorry, please try again.");
-  }
-};
-
+var cardElement = this.setAttribute('src', cards[cardId].cardImage);
+  if (cardsInPlay.length == 2) {
 checkForMatch()
+}
+}
+
+createBoard()
+
+/* Reset Button */
